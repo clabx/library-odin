@@ -1,12 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./build/css/style.css" />
+    <script src="./build/js/main.js" defer></script>
+    <title>Library</title>
+  </head>
+  <body class="h-screen flex flex-shrink-0 flex-col bg-teal-200 relative">
+    <div class="w-full h-24 bg-teal-400"></div>
+    <div class="h-5/6 w-full flex mt-6 mb-6">
+      <div class="h-full w-1/6"></div>
+      <div
+        class="h-full w-4/6 bg-teal-600 shadow-teal-900 drop-shadow-2xl border-2 border-teal-700 rounded-md flex flex-col p-6 gap-6 overflow-scroll">
+        <div class="self-end">
+          <a
+            id="addBookButton"
+            class="flex items-center justify-center gap-2 mr-12 rounded-xl border-4 border-black bg-teal-100 px-8 py-4 font-bold shadow-[6px_6px_0_0_#000] transition hover:shadow-none focus:outline-none focus:ring active:bg-teal-50 w-48 select-none">
+            Add a book! 📚
+          </a>
+        </div>
+
+        <div id="booksGrid" class="bg-teal-700 rounded-xl p-6 gap-6 h-full">
+          <div
+            id="noBooks"
+            class="bg-teal-500 flex border-2 border-teal-300 shadow-2xl">
+            <p
+              class="w-fit h-fit self-center ml-auto mr-auto text-3xl select-none">
+              No books added!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <section
+        id="bookPopUp"
+        class="rounded-3xl shadow-2xl absolute left-0 right-0 top-0 bottom-0 ml-auto mr-auto mt-auto mb-auto h-max w-2/6 bg-green-200 shadow-gray-900 fadeOut">
+        <div class="p-8 text-center sm:p-12">
+          <p
+            class="text-sm font-semibold uppercase tracking-widest text-teal-700">
+            Tell us all about the book!
+          </p>
+
+          <form action="" method="post" class="flex flex-col gap-6 p-4">
+            <div class="flex flex-col items-start">
+              <label for="bookName">What is the book called?</label>
+              <input
+                id="bookName"
+                type="text"
+                class="w-5/6 rounded-lg bg-teal-50 outline-none p-1 border-2 border-teal-300 focus:border-teal-600" />
+            </div>
+
+            <div class="flex flex-col items-start">
+              <label for="author">Who wrote it?</label>
+              <input
+                id="author"
+                type="text"
+                class="w-5/6 rounded-lg bg-teal-50 outline-none p-1 border-2 border-teal-300 focus:border-teal-600" />
+            </div>
+
+            <div class="flex flex-col items-start">
+              <label for="pages">How many pages does it have?</label>
+              <input
+                id="pages"
+                type="number"
+                min="1"
+                class="w-5/6 rounded-lg bg-teal-50 outline-none p-1 border-2 border-teal-300 focus:border-teal-600" />
+            </div>
+
+            <button
+              type="button"
+              class="mt-8 inline-block w-full rounded-full bg-pink-600 py-4 text-sm font-bold text-white shadow-xl">
+              Send it!
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <div class="h-full w-1/6"></div>
+    </div>
+  </body>
 </html>
