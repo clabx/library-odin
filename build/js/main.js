@@ -69,6 +69,9 @@ function createCard(title, author, pages, read) {
   bookPages.appendChild(bookPagesText);
   book.appendChild(bookPages);
 
+  const bookBottomArea = document.createElement("div");
+  bookBottomArea.setAttribute("id", "bookBottomArea");
+
   const bookRead = document.createElement("div");
   bookRead.setAttribute("id", "bookRead");
   const bookLeido = document.createElement("div");
@@ -79,7 +82,14 @@ function createCard(title, author, pages, read) {
   bookNoLeido.textContent = "Unread";
   bookRead.appendChild(bookLeido);
   bookRead.appendChild(bookNoLeido);
-  book.appendChild(bookRead);
+  bookBottomArea.appendChild(bookRead);
+
+  const deleteBook = document.createElement("div");
+  deleteBook.setAttribute("id", "deleteBook");
+  deleteBook.textContent = "Delete";
+  bookBottomArea.appendChild(deleteBook);
+
+  book.appendChild(bookBottomArea);
 
   if (read === true) {
     bookNoLeido.classList.add("hide");
@@ -89,9 +99,16 @@ function createCard(title, author, pages, read) {
 
   booksGrid.appendChild(book);
   const thisBook = booksGrid.lastChild;
-  thisBook.lastChild.addEventListener("click", () => {
-    thisBook.lastChild.firstChild.classList.toggle("hide");
-    thisBook.lastChild.lastChild.classList.toggle("hide");
+  thisBook.lastChild.firstChild.addEventListener("click", () => {
+    thisBook.lastChild.firstChild.firstChild.classList.toggle("hide");
+    thisBook.lastChild.firstChild.lastChild.classList.toggle("hide");
+  });
+
+  thisBook.lastChild.lastChild.addEventListener("click", () => {
+    thisBook.remove();
+    if (booksGrid.lastChild.id !== "book") {
+      noBooksCard.classList.remove("hide");
+    }
   });
 }
 
@@ -169,23 +186,11 @@ submitBookButton.addEventListener("click", () => {
     createCard(bookInfo.title, bookInfo.author, bookInfo.pages, bookInfo.read);
     readBookRadio.classList.remove("opacity-30");
     unreadBookRadio.classList.remove("scale-110");
-    unreadBookRadio.classList.remove("check");
+    unreadBookRadio.classList.remove("checked");
     unreadBookRadio.classList.remove("opacity-30");
     readBookRadio.classList.remove("scale-110");
-    readBookRadio.classList.remove("check");
+    readBookRadio.classList.remove("checked");
     bookForm.reset();
     closeForm();
   }
 });
-
-/*
-          <div id="book">
-            <div id="bookTitle"><h1>"The incredible story of Tim Burton"</h1></div>
-            <div id="bookAuthor"><h2>by Josepe</h2></div>
-            <div id="bookPages"><p>Pages: 321</p></div>
-            <div id="bookRead">
-                <div>Read</div>
-                <div>Unread</div>
-            </div>
-          </div>
-*/

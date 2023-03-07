@@ -1003,14 +1003,22 @@ html {
   font-style: italic;
 }
 
-#book #bookRead {
-  display: flex;
-  align-items: flex-end;
+#book #bookBottomArea {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "deleteBook bookRead";
   height: 100%;
 }
 
-#book #bookRead div {
-  width: 25%;
+#book #bookBottomArea #bookRead {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  grid-area: bookRead;
+}
+
+#book #bookBottomArea #bookRead div {
+  width: 50%;
   border: 0.1rem;
   border-style: solid;
   border-color: rgb(94 234 212);
@@ -1026,12 +1034,31 @@ html {
   text-align: center;
 }
 
-#book #bookRead :nth-child(1) {
+#book #bookBottomArea #bookRead :nth-child(1) {
   background-color: lightgreen;
 }
 
-#book #bookRead :nth-child(2) {
+#book #bookBottomArea #bookRead :nth-child(2) {
   background-color: lightpink;
+}
+
+#book #bookBottomArea #deleteBook {
+  grid-area: deleteBook;
+  align-self: flex-end;
+  width: 50%;
+  border: 0.1rem;
+  border-style: solid;
+  border-color: rgb(94 234 212);
+  border-radius: 0.3rem;
+  background-color: rgba(360, 0, 0, 50%);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  padding: 1px;
+  height: -moz-fit-content;
+  height: fit-content;
+  text-align: center;
 }
 
 .hide {
