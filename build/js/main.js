@@ -17,6 +17,9 @@ const radioboxUnread = document.querySelector("#radioboxUnread");
 const readBookRadio = document.querySelector("#readBook");
 const unreadBookRadio = document.querySelector("#unreadBook");
 
+const booksGrid = document.querySelector("#booksGrid");
+const noBooksCard = document.querySelector("#noBooks");
+
 const books = [];
 
 function BookObject(title, author, pages, read) {
@@ -38,6 +41,58 @@ function closeForm() {
   bookPopUp.classList.toggle("fadeOut");
   bookPopUp.classList.toggle("fadeIn");
   addBookButton.textContent = "Add a book! 📚";
+}
+
+function createCard(title, author, pages, read) {
+  noBooksCard.classList.add("hide");
+  const book = document.createElement("div");
+  book.setAttribute("id", "book");
+
+  const bookTitle = document.createElement("div");
+  bookTitle.setAttribute("id", "bookTitle");
+  const bookTitleText = document.createElement("h1");
+  bookTitleText.textContent = title;
+  bookTitle.appendChild(bookTitleText);
+  book.appendChild(bookTitle);
+
+  const bookAuthor = document.createElement("div");
+  bookAuthor.setAttribute("id", "bookAuthor");
+  const bookAuthorText = document.createElement("h2");
+  bookAuthorText.textContent = "by ".concat(author);
+  bookAuthor.appendChild(bookAuthorText);
+  book.appendChild(bookAuthor);
+
+  const bookPages = document.createElement("div");
+  bookPages.setAttribute("id", "bookPages");
+  const bookPagesText = document.createElement("p");
+  bookPagesText.textContent = "Pages: ".concat(pages);
+  bookPages.appendChild(bookPagesText);
+  book.appendChild(bookPages);
+
+  const bookRead = document.createElement("div");
+  bookRead.setAttribute("id", "bookRead");
+  const bookLeido = document.createElement("div");
+  bookLeido.setAttribute("id", "bookLeido");
+  bookLeido.textContent = "Read";
+  const bookNoLeido = document.createElement("div");
+  bookNoLeido.setAttribute("id", "bookNoLeido");
+  bookNoLeido.textContent = "Unread";
+  bookRead.appendChild(bookLeido);
+  bookRead.appendChild(bookNoLeido);
+  book.appendChild(bookRead);
+
+  if (read === true) {
+    bookNoLeido.classList.add("hide");
+  } else {
+    bookLeido.classList.add("hide");
+  }
+
+  booksGrid.appendChild(book);
+  const thisBook = booksGrid.lastChild;
+  thisBook.lastChild.addEventListener("click", () => {
+    thisBook.lastChild.firstChild.classList.toggle("hide");
+    thisBook.lastChild.lastChild.classList.toggle("hide");
+  });
 }
 
 // Scripts
@@ -96,12 +151,10 @@ submitBookButton.addEventListener("click", () => {
     invalidInputPages.setAttribute("hidden", "");
   }
 
-  let bookRead = null;
+  let bookRead = false;
 
   if (readBookRadio.classList.contains("checked")) {
     bookRead = true;
-  } else if (unreadBookRadio.classList.contains("checked")) {
-    bookRead = false;
   }
 
   if (valid) {
@@ -111,6 +164,9 @@ submitBookButton.addEventListener("click", () => {
       inputPages.value,
       bookRead
     );
+    const bookInfo = books[books.length - 1];
+
+    createCard(bookInfo.title, bookInfo.author, bookInfo.pages, bookInfo.read);
     readBookRadio.classList.remove("opacity-30");
     unreadBookRadio.classList.remove("scale-110");
     unreadBookRadio.classList.remove("check");
@@ -121,3 +177,15 @@ submitBookButton.addEventListener("click", () => {
     closeForm();
   }
 });
+
+/*
+          <div id="book">
+            <div id="bookTitle"><h1>"The incredible story of Tim Burton"</h1></div>
+            <div id="bookAuthor"><h2>by Josepe</h2></div>
+            <div id="bookPages"><p>Pages: 321</p></div>
+            <div id="bookRead">
+                <div>Read</div>
+                <div>Unread</div>
+            </div>
+          </div>
+*/
