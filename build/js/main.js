@@ -20,7 +20,7 @@ const unreadBookRadio = document.querySelector("#unreadBook");
 const booksGrid = document.querySelector("#booksGrid");
 const noBooksCard = document.querySelector("#noBooks");
 
-const books = [];
+let bookInfo;
 
 function BookObject(title, author, pages, read) {
   this.title = title;
@@ -175,13 +175,12 @@ submitBookButton.addEventListener("click", () => {
   }
 
   if (valid) {
-    books[books.length - 1] = new BookObject(
+    bookInfo = new BookObject(
       inputTitle.value,
       inputAuthor.value,
       inputPages.value,
       bookRead
     );
-    const bookInfo = books[books.length - 1];
 
     createCard(bookInfo.title, bookInfo.author, bookInfo.pages, bookInfo.read);
     readBookRadio.classList.remove("opacity-30");
