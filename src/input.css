@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@font-face {
+  font-family: DMSerifText;
+  src: url("../font/DMSerifText-Regular.ttf");
+}
+
 .fadeOut {
   visibility: hidden;
   opacity: 0;
@@ -24,5 +33,53 @@
 
 #noBooks {
   grid-column: 2 / span 2;
-  grid-row: 1 / span 12;
+  grid-row: 1 / span 2;
+}
+
+#book {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+  background-color: rgb(153 246 228);
+  border: solid 0.25rem rgb(94 234 212);
+  border-radius: 5%;
+  padding: 0.5rem;
+  padding-top: 0;
+  overflow: scroll;
+}
+
+#book #bookTitle {
+  font-size: 1.5rem;
+}
+
+#book #bookAuthor {
+  align-self: flex-end;
+  font-style: italic;
+}
+
+#book #bookRead {
+  position: relative;
+}
+
+#book #bookRead div {
+  width: 25%;
+  border: 0.1rem;
+  border-style: solid;
+  border-color: rgb(94 234 212);
+  border-radius: 0.3rem;
+  margin-left: auto;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  padding: 1px;
+}
+
+#book #bookRead :nth-child(1) {
+  background-color: lightgreen;
+}
+
+#book #bookRead :nth-child(2) {
+  background-color: lightpink;
 }

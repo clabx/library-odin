@@ -521,6 +521,14 @@ video {
   position: relative;
 }
 
+.top-3 {
+  top: 0.75rem;
+}
+
+.left-2 {
+  left: 0.5rem;
+}
+
 .left-0 {
   left: 0px;
 }
@@ -537,6 +545,18 @@ video {
   bottom: 0px;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mt-\[-2rem\] {
+  margin-top: -2rem;
+}
+
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -547,14 +567,6 @@ video {
 
 .mr-12 {
   margin-right: 3rem;
-}
-
-.ml-auto {
-  margin-left: auto;
-}
-
-.mr-auto {
-  margin-right: auto;
 }
 
 .mt-auto {
@@ -589,16 +601,16 @@ video {
   height: 6rem;
 }
 
+.h-36 {
+  height: 9rem;
+}
+
 .h-5\/6 {
   height: 83.333333%;
 }
 
 .h-full {
   height: 100%;
-}
-
-.h-36 {
-  height: 9rem;
 }
 
 .h-fit {
@@ -611,8 +623,20 @@ video {
   height: max-content;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
 .w-full {
   width: 100%;
+}
+
+.w-72 {
+  width: 18rem;
 }
 
 .w-1\/6 {
@@ -625,10 +649,6 @@ video {
 
 .w-48 {
   width: 12rem;
-}
-
-.w-36 {
-  width: 9rem;
 }
 
 .w-fit {
@@ -644,8 +664,24 @@ video {
   width: 83.333333%;
 }
 
+.w-8 {
+  width: 2rem;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
 .flex-shrink-0 {
   flex-shrink: 0;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .select-none {
@@ -686,8 +722,8 @@ video {
   align-self: center;
 }
 
-.overflow-scroll {
-  overflow: scroll;
+.overflow-auto {
+  overflow: auto;
 }
 
 .rounded-md {
@@ -733,16 +769,6 @@ video {
   border-color: rgb(94 234 212 / var(--tw-border-opacity));
 }
 
-.border-teal-50 {
-  --tw-border-opacity: 1;
-  border-color: rgb(240 253 250 / var(--tw-border-opacity));
-}
-
-.border-teal-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(153 246 228 / var(--tw-border-opacity));
-}
-
 .bg-teal-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(153 246 228 / var(--tw-bg-opacity));
@@ -768,11 +794,6 @@ video {
   background-color: rgb(15 118 110 / var(--tw-bg-opacity));
 }
 
-.bg-gray-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
 .bg-teal-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(20 184 166 / var(--tw-bg-opacity));
@@ -786,11 +807,6 @@ video {
 .bg-teal-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(240 253 250 / var(--tw-bg-opacity));
-}
-
-.bg-pink-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(219 39 119 / var(--tw-bg-opacity));
 }
 
 .p-6 {
@@ -819,8 +835,17 @@ video {
   padding-bottom: 1rem;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .text-center {
   text-align: center;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
 }
 
 .text-3xl {
@@ -849,9 +874,19 @@ video {
   letter-spacing: 0.1em;
 }
 
+.text-teal-900 {
+  --tw-text-opacity: 1;
+  color: rgb(19 78 74 / var(--tw-text-opacity));
+}
+
 .text-teal-700 {
   --tw-text-opacity: 1;
   color: rgb(15 118 110 / var(--tw-text-opacity));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -905,6 +940,16 @@ video {
   transition-duration: 150ms;
 }
 
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@font-face {
+  font-family: DMSerifText;
+
+  src: url("../font/DMSerifText-Regular.ttf");
+}
+
 .fadeOut {
   visibility: hidden;
   opacity: 0;
@@ -927,7 +972,57 @@ video {
 
 #noBooks {
   grid-column: 2 / span 2;
-  grid-row: 1 / span 12;
+  grid-row: 1 / span 2;
+}
+
+#book {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+  background-color: rgb(153 246 228);
+  border: solid 0.25rem rgb(94 234 212);
+  border-radius: 5%;
+  padding: 0.5rem;
+  padding-top: 0;
+  overflow: scroll;
+}
+
+#book #bookTitle {
+  font-size: 1.5rem;
+}
+
+#book #bookAuthor {
+  align-self: flex-end;
+  font-style: italic;
+}
+
+#book #bookRead {
+  position: relative;
+}
+
+#book #bookRead div {
+  width: 25%;
+  border: 0.1rem;
+  border-style: solid;
+  border-color: rgb(94 234 212);
+  border-radius: 0.3rem;
+  margin-left: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  padding: 1px;
+}
+
+#book #bookRead :nth-child(1) {
+  background-color: lightgreen;
+}
+
+#book #bookRead :nth-child(2) {
+  background-color: lightpink;
 }
 
 .hover\:shadow-none:hover {
