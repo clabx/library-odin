@@ -69,13 +69,17 @@ html {
 
 #book #bookBottomArea #bookRead {
   display: flex;
-  align-items: flex-end;
   height: 100%;
   grid-area: bookRead;
+  width: fit-content;
+  height: fit-content;
+  margin-top: auto;
+  margin-left: auto;
 }
 
 #book #bookBottomArea #bookRead div {
-  width: 50%;
+  width: 4rem;
+  height: 2rem;
   border: 0.1rem;
   border-style: solid;
   border-color: rgb(94 234 212);
@@ -84,7 +88,6 @@ html {
   user-select: none;
   cursor: pointer;
   padding: 1px;
-  height: fit-content;
   text-align: center;
 }
 
@@ -99,7 +102,8 @@ html {
 #book #bookBottomArea #deleteBook {
   grid-area: deleteBook;
   align-self: flex-end;
-  width: 50%;
+  width: 4rem;
+  height: 2rem;
   border: 0.1rem;
   border-style: solid;
   border-color: rgb(94 234 212);
@@ -108,7 +112,6 @@ html {
   user-select: none;
   cursor: pointer;
   padding: 1px;
-  height: fit-content;
   text-align: center;
 }
 
